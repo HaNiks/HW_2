@@ -7,9 +7,11 @@ public class Main {
 
     public static void printTriangle() {
         int number = getNumberElements();
+        System.out.println("Enter standard symbol");
+        char symbol = getStandardChar();
         char[] arr = new char[number];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = '.';
+            arr[i] = symbol;
         }
         fillArray(arr, arr.length / 2, arr.length / 2);
     }
@@ -30,10 +32,30 @@ public class Main {
         return number;
     }
 
+    public static char getStandardChar() {
+        Scanner scanner = new Scanner(System.in);
+        boolean isOneSymbol = true;
+        String input;
+        char symbol = '.';
+        while (isOneSymbol) {
+            input = scanner.nextLine();
+            symbol = input.charAt(0);
+            isOneSymbol = false;
+            if (input.length() > 1) {
+                System.out.println("One symbol");
+                isOneSymbol = true;
+            }
+        }
+        return symbol;
+    }
+
     public static void fillArray(char[] arr, int from, int to) {
+        System.out.println("Enter symbol for Tree");
+        char symbol = getStandardChar();
+        System.out.println("Your Tree:");
         while (from >= 0 && to <= arr.length) {
-            arr[from] = '*';
-            arr[to] = '*';
+            arr[from] = symbol;
+            arr[to] = symbol;
             from--;
             to++;
             for (char s : arr) {
