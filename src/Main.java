@@ -7,9 +7,9 @@ public class Main {
 
     public static void printTriangle() {
         int number = getNumberElements();
-        String[] arr = new String[number];
+        char[] arr = new char[number];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = ".";
+            arr[i] = '.';
         }
         fillArray(arr, arr.length / 2, arr.length / 2);
     }
@@ -30,13 +30,13 @@ public class Main {
         return number;
     }
 
-    public static void fillArray(String[] arr, int from, int to) {
+    public static void fillArray(char[] arr, int from, int to) {
         while (from >= 0 && to <= arr.length) {
-            arr[from] = "*";
-            arr[to] = "*";
+            arr[from] = '*';
+            arr[to] = '*';
             from--;
             to++;
-            for (String s : arr) {
+            for (char s : arr) {
                 System.out.print(s + " ");
             }
             System.out.println();
