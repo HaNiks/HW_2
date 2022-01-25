@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,31 +6,40 @@ public class Main {
     }
 
     public static void printTriangle() {
-        String[] arr = new String[3];
-        int from = 1;
-        int to = 1;
+        int number = getNumberElements();
+        String[] arr = new String[number];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = ".";
         }
-        while (from >= 0 && to <= 2) {
-            if (from == to) {
-                arr[from] = "*";
-                from--;
-                to++;
-                for (String s : arr) {
-                    System.out.print(s + " ");
-                }
-                System.out.println();
-            } else {
-                arr[from] = "*";
-                arr[to] = "*";
-                from--;
-                to++;
-                for (String s : arr) {
-                    System.out.print(s + " ");
-                }
-                System.out.println();
+        fillArray(arr, arr.length / 2, arr.length / 2);
+    }
+
+    public static int getNumberElements() {
+        Scanner scanner = new Scanner(System.in);
+        boolean isOdd = true;
+        System.out.println("Enter number of elements in array (Number must be ODD)");
+        int number = scanner.nextInt();
+        while (isOdd) {
+            isOdd = false;
+            if (number % 2 == 0) {
+                System.out.println("Pleas, enter ODD number");
+                number = scanner.nextInt();
+                isOdd = true;
             }
+        }
+        return number;
+    }
+
+    public static void fillArray(String[] arr, int from, int to) {
+        while (from >= 0 && to <= arr.length) {
+            arr[from] = "*";
+            arr[to] = "*";
+            from--;
+            to++;
+            for (String s : arr) {
+                System.out.print(s + " ");
+            }
+            System.out.println();
         }
     }
 }
